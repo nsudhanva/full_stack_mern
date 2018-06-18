@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = prompt('Enter your name');
+        console.log('welcome to the Guess game ' + name);
+        //targeNumber-camel case-variable, function
+        //TargetNumber - pascal case - class name
+        //target_number = snake case 
+        var targetNumber = Math.ceil(Math.random() * 100);
+        console.log(targetNumber);  
+        var maxGuess = 10;
+        var playerGuess = 0;
+        var remaining = 10;
+        for(var i = 0;i < maxGuess;i++)
+        {
+            playerGuess++;
+            var guess = prompt('Guess my number');
+            if(guess < targetNumber)
+            {
+                console.log('Guess was low ' + guess);
+            }
+            else if(guess > targetNumber)
+            {
+                console.log('Guess was high ' + guess);
+            }
+            else
+            {
+                console.log('Good job ' + name + ',' + 'Guess is correct');
+                console.log('You have guessed in ' + playerGuess + ' choices');
+                break;
+            }
+            remaining--;
+            console.log('Guesses remaining ' +  remaining);
+            
+            if(playerGuess == 10)
+            {
+                console.log('you are out of chance');
+            }
+        }  
+    </script>
+</body>
+</html>
