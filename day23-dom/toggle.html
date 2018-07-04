@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Toggle-Text</title>
+    </head>
+    
+    <h2 id="text">dct academy</h2>
+    <button id="btn">click me to toggle</button>
+
+    <body>
+        <script>
+            var textHandle = document.getElementById('text');
+            var btnHandle = document.getElementById('btn');
+            var flag = true;   
+                btnHandle.addEventListener('click',function(){
+                    if(flag){
+                        textHandle.innerHTML = textHandle.innerHTML.toUpperCase();
+                        flag = false;
+                    }               
+                    else{
+                        textHandle.innerHTML = textHandle.innerHTML.toLowerCase();
+                        flag = true;
+                    }
+            },false)
+           
+        </script>
+    </body>
+</html>

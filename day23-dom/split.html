@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>This is split</title>
+    </head>
+    <body>
+        <h2 id="names">js,node,rb,py,php</h2>
+        <button id="btnName">Click me to split </button>
+        <h2 id="result"></h2>
+        <script>
+            var nameHandle = document.getElementById('names');
+            var btnHandle = document.getElementById('btnName');
+            var resultHandle = document.getElementById('result');
+            var arr = [];
+            btnHandle.addEventListener('click',function(){
+                var array = nameHandle.innerHTML.split(',')
+                console.log(array);
+                array.forEach(function(ele){
+                    resultHandle.innerHTML += ele +" ";
+                })
+
+            },false);
+        </script>
+    </body>
+</html>

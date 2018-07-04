@@ -1,0 +1,48 @@
+<html>
+    <body>
+        <!--h2 is a tag, id is an attribute-->
+        <h2 id ='name'>dct academy</h2>
+        <button id="btnName">click here</button>
+
+
+        <h2 id="name1">BANGALORE</h2>
+        <button id="btnName1">click here to lower case</button>
+        <script>
+            //console.log(document);
+
+            var nameHandle = document.getElementById('name');
+            var nameBtnHandle = document.getElementById('btnName');
+            
+
+            //for our reference to see ehat the variable holds
+
+            console.log(nameHandle);
+            console.log(typeof nameHandle);
+            console.log(nameHandle.innerHTML.toUpperCase());
+
+            //for out reference to see ehat variable holds
+            
+            console.log(nameBtnHandle);
+            console.log(typeof nameBtnHandle);
+            console.log(nameBtnHandle.innerHTML);
+
+            //Event Handler
+
+            nameBtnHandle.addEventListener('click', function(){
+                var presentText = nameHandle.innerHTML;
+                var transformedText =  presentText.toUpperCase();
+                nameHandle.innerHTML = transformedText;
+            },false);
+
+            var nameHandle1 = document.getElementById('name1');
+            var nameBtnHandle1 = document.getElementById('btnName1');
+
+            nameBtnHandle1.addEventListener('click',function(){
+                var presentText1 = nameHandle1.innerHTML;
+                var transformedText1 =  presentText1.toLowerCase();
+                nameHandle1.innerHTML = transformedText1;
+            })
+
+        </script>   
+    </body>
+</html>

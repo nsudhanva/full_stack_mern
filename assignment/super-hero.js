@@ -43,21 +43,33 @@ var superHeroes = [
 //         return `${b} is not in the superheroes list`;
 //     }
 //   }
+// function superPower(a,b){
+//     if((b.length == 0) ||(b == undefined)){
+//         return `ivalid input`;
+//     }
+//     if(!a.includes(b)){
+//         return 	`${b} is not in superheroes list`
+//     }
+//     var result = [];
+//     var store = a.forEach(function(value){
+//         console.log(value.name);
+//         if(value.name == b){
+//             result.push(value.powers);
+//         }
+//     })
+//     return result.join(',');
+// }
 function superPower(a,b){
-    if((b.length == 0) ||(b == undefined)){
-        return `ivalid input`;
+    if(b.length == 0){
+        return `invalid input`;
     }
-    if(!a.includes(b)){
-        return 	`${b} is not in superheroes list`
-    }
-    var result = [];
-    var store = a.forEach(function(value){
-        console.log(value.name);
-        if(value.name == b){
-            result.push(value.powers);
+    if(a.name[0] == b){
+        return a.powers.join(',');
         }
-    })
-    return result.join(',');
+    
+  else{
+        return `${b} is not in the super heroes list`
+}
 }
 
-  console.log(superPower(superHeroes,'iron man'))
+  console.log(superPower(superHeroes,'Molecule Man'))

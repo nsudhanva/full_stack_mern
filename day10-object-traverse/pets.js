@@ -34,3 +34,5 @@ pets.forEach(function(pet){
     console.log(petDetails(pet));
 })
 
+console.log(Object.values(pets[0]));
+

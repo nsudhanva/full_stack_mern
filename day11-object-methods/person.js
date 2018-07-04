@@ -23,7 +23,7 @@ console.log(student.whichCity());
 console.log(student.myEducaton())
 console.log(student.myCollege())
 
-var product = {
+var product()
     name: 'Marker',
     price: 'INR 15',
     description: 'white board marker',
@@ -43,7 +43,7 @@ var car = {
     start: function(){
         this.carState = true;
         return 'engine started';
-    },
+    },  
     stop: function(){
         this.carState  = false;
         return 'the engine has stopped';
