@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    My social media links
+
+    <ul id="myLinks"> 
+        <!-- create attribute node -->
+    </ul>
+
+    <script>
+        var links = [
+            {
+                title:'website',
+                url: 'http://www.dctacademy.com'},
+            {
+                title:'facebook',
+                url:'http://www.facebook.com/dctacademy.bangalore'
+            },
+            {
+                title:'github',
+                url:'http://www.github.com/dctacademy'
+            }]
+            
+            var myLinksHandle = document.getElementById('myLinks');
+
+            links.forEach(function(link){
+                var li = document.createElement('li');
+                var anchor = document.createElement('a');
+                var attribute = document.createAttribute('href');
+                var text = document.createTextNode(link.title);
+                attribute.value = link.url;
+                anchor.setAttributeNode(attribute);
+                anchor.appendChild(text);
+                li.appendChild(anchor);
+                myLinksHandle.appendChild(li);
+            })
+
+
+
+    </script>
+</body>
+</html>
