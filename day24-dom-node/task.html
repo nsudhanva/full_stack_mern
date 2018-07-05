@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>MyTaskList</h2>
+
+    <ul id="myTasks"></ul>
+
+    <script>
+        var taskHandle = document.getElementById('myTasks');
+        var task1 = 'get groceries';
+        var task2 = 'meet grand parents';
+
+        var liFirst = document.createElement('li');
+        var liFirstText = document.createTextNode(task1);
+        liFirst.appendChild(liFirstText);
+        taskHandle.appendChild(liFirst);
+
+        var liSecond  = document.createElement('li');
+        var liSecondText  = document.createTextNode(task2);
+        liSecond.appendChild(liSecondText);
+        taskHandle.appendChild(liSecond);
+    </script>
+</body>
+</html>
