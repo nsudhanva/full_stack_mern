@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Names</title>
+</head>
+<body>
+    <ol id="names"></ol>
+    <script>
+        var nameHandle = document.getElementById('names');
+        var firstNames = ['Shreedhar ','Shreekar ','Sudhanva'];
+        var secondNames = ['Ganapati ','Ganapati ','Narayana'];
+        var thirdNames = ['Hegde ','Hegde', 'Narayana'];
+
+        var liFirst = document.createElement('li');
+        var liSecond = document.createElement('li');
+        var liThird = document.createElement('li');
+        firstNames.forEach(function(firstName){
+            var text1 = document.createTextNode(firstName);
+            liFirst.appendChild(text1);
+            nameHandle.appendChild(liFirst);
+        });
+        secondNames.forEach(function(secondName){
+            var text2 = document.createTextNode(secondName);
+            liSecond.appendChild(text2);
+            nameHandle.appendChild(liSecond);
+        });
+        thirdNames.forEach(function(thirdName){
+            var text3 = document.createTextNode(thirdName);
+            liThird.appendChild(text3);
+            nameHandle.appendChild(liThird);
+        });
+        
+        
+        
+    </script>
+</body>
+</html>

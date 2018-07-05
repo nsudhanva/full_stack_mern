@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Details</title>
+    <h2>Details</h2>
+    <button id="btn">click here</button>
+    <h4 id="result"></h4>
+</head>
+<body>
+    <script>
+        var details = ['My name is Shreedhar','I am a student'];
+        var btnHandle = document.getElementById('btn');
+        var resultHandle = document.getElementById('result');
+        btnHandle.addEventListener('click', function(){
+            details.forEach(function(detail){
+                var h2 = document.createElement('h2');
+                var text = document.createTextNode(detail);
+                h2.appendChild(text);
+                resultHandle.appendChild(h2);
+            });
+        },false);
+    </script>
+</body>
+</html>

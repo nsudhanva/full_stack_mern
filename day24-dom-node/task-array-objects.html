@@ -9,14 +9,10 @@
 <body>
     <h2>My Tasks</h2>
     <ul id="myTasks"></ul>
-
     <button id="btn">ShowMeTaks</button>
     <script>
 
-        var tasks = [{title:'watch a movie', dueDate: '2018-07-07'},
-        {
-            title:'meet friends', dueDate: '2018-07-07'  
-        }];
+        var tasks = [{title:'watch a movie', dueDate: '2018-07-07'},{title:'meet friends', dueDate: '2018-07-07'}];
         var myTasksHandle  = document.getElementById('myTasks');
         var btnHandle = document.getElementById('btn');
             btnHandle.addEventListener('click', function(){
