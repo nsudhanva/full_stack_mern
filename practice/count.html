@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body><html>
+    <head>
+        <title>count</title>
+    </head>
+    
+    <h2 id="text">count</h2>
+    <h2 id="result">0</h2>
+    <button id="btnUp">countUp</button>
+    <button id="btnDwn">countDown</button>
+
+    <body>
+        <script>
+            var count = 0;
+            var textHandle = document.getElementById('text');
+            var btnUpHandle = document.getElementById('btnUp');
+            var btnDwnHandle = document.getElementById('btnDwn');
+            var resultHandle = document.getElementById('result');
+            //var flag = true;   
+                btnUpHandle.addEventListener('click',function(){
+                       count++;
+                       resultHandle.innerHTML = count;
+                    });               
+                btnDwnHandle.addEventListener('click',function(){
+                    if(count > 0){
+                        count--;
+                       resultHandle.innerHTML = count;
+                    }
+                       
+                    } ); 
+            
+           
+        </script>
+    </body>
+</html>
