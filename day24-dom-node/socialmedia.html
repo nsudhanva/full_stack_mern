@@ -10,7 +10,7 @@
     My social media links
 
     <ul id="myLinks"> 
-        <!-- create attribute node -->
+        <!-- create href node -->
     </ul>
 
     <script>
@@ -30,12 +30,12 @@
             var myLinksHandle = document.getElementById('myLinks');
 
             links.forEach(function(link){
-                var li = document.createElement('li');
-                var anchor = document.createElement('a');
-                var attribute = document.createAttribute('href');
-                var text = document.createTextNode(link.title);
-                attribute.value = link.url;
-                anchor.setAttributeNode(attribute);
+                var li = document.createElement('li');//<li></li>
+                var anchor = document.createElement('a');//<a></a>
+                var href = document.createAttribute('href');//href
+                href.value = link.url;//href = 'www.dctacademy.com',
+                anchor.setAttributeNode(href);//<a href = 'www.dctacademy.com';</a>
+                var text = document.createTextNode(link.title);//website
                 anchor.appendChild(text);
                 li.appendChild(anchor);
                 myLinksHandle.appendChild(li);
