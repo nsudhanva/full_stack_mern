@@ -1,5 +1,5 @@
 var axios = require("axios");
-var url = 'https://www.gender-api.com/get?name=anarghya&key=pRPLCejozFwCHFbVCR'
+var url = ' '
 axios.get(url)
 // var name  = 'dona';
 // var key = 'pRPLCejozFwCHFbVCR';
