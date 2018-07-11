@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>See the temperature of city</h2>
+    <label>City</label>
+    <select id="city">
+        <option value="">Select city</option>
+        <option value="bangalore">Bengaluru</option>
+        <option value="chennai">Chennai</option>
+        <option value="hyderabad">Hyderbad</option>
+    </select>
+    <h2 id="output"></h2>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var cityHandle = document.getElementById('city');
+        var userInput = cityHandle.value;
+        var outputHandle = document.getElementById('output');
+        
+        cityHandle.addEventListener('change', function(){
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityHandle.value}&appid=3ae18949940ecdb295e65ef1a2186a0f&units=metric`;
+            
+            axios.get(url)
+            .then(function(response){
+            //console.log(response.data.main.temp);
+            outputHandle.innerHTML = response.data.main.temp;
+            })
+            .catch(function(err){
+
+            });
+        }, false);
+    </script>
+</body>
+</html>
