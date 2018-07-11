@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Json Holder</title>
+</head>
+<body>
+    <div id='app'></div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var appHandle = document.getElementById('app');
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(function(response) {
+        var users = response.data;
+        //console.log(users);
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+        //
+        console.log(thead);
+        var tr = document.createElement('tr');
+        //console.log(tr);
+        var th1 = document.createElement('th');
+        var th1Text = document.createTextNode('Sl no');
+        th1.appendChild(th1Text);
+        tr.appendChild(th1);
+
+        var th2 = document.createElement('th');
+        var th2Text = document.createTextNode('name');
+        th2.appendChild(th2Text);
+        tr.appendChild(th2);
+
+        var th3 = document.createElement('th');
+        var th3Text = document.createTextNode('username');
+        th3.appendChild(th3Text);
+        tr.appendChild(th3);
+
+        var th4 = document.createElement('th');
+        var th4Text = document.createTextNode('email');
+        th4.appendChild(th4Text);
+        tr.appendChild(th4);
+
+        var th5 = document.createElement('th');
+        var th5Text = document.createTextNode('address');
+        th5.appendChild(th5Text);
+        tr.appendChild(th5);
+
+        var th6 = document.createElement('th');
+        var th6Text = document.createTextNode('zipcode');
+        th6.appendChild(th6Text);
+        tr.appendChild(th6);
+
+        var th7 = document.createElement('th');
+        var th7Text = document.createTextNode('phone');
+        th7.appendChild(th7Text);
+        tr.appendChild(th7);
+
+        var th8 = document.createElement('th');
+        var th8Text = document.createTextNode('website');
+        th8.appendChild(th8Text);
+        tr.appendChild(th8);
+        
+
+        var th9 = document.createElement('th');
+        var th9Text = document.createTextNode('company Name');
+        th9.appendChild(th9Text);
+        tr.appendChild(th9);
+        
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        console.log(table);
+        appHandle.appendChild(table);//appending the 'table' into <div>tag
+        table.setAttribute('border', 1);
+        //tbody
+        users.forEach(function(user) {
+            var row = document.createElement('tr');
+            //console.log(row);
+            tbody.appendChild(row);
+            table.appendChild(tbody);
+            //Slno column
+            var td1 = document.createElement('td');
+            row.appendChild(td1);
+            var text1 = document.createTextNode(`${user.id}`);
+            td1.appendChild(text1);
+            //name column
+            var td2 = document.createElement('td');
+            row.appendChild(td2);
+            var text2 = document.createTextNode(`${user.name}`);
+            td2.appendChild(text2);
+            //username column
+            var td3 = document.createElement('td');
+            row.appendChild(td3);
+            var text3 = document.createTextNode(`${user.username}`);
+            td3.appendChild(text3);
+            //email column
+            var td4 = document.createElement('td');
+            row.appendChild(td4);
+            var text4 = document.createTextNode(`${user.email}`);
+            td4.appendChild(text4);
+            //address column
+            var td5 = document.createElement('td');
+            row.appendChild(td5);
+            var text5 = document.createTextNode(`${user.address.street}, ${user.address.suite}, ${user.address.city}`);
+            td5.appendChild(text5);
+            //zipcode column
+            var td6 = document.createElement('td');
+            row.appendChild(td6);
+            var text6 = document.createTextNode(`${user.address.zipcode}`);
+            td6.appendChild(text6);
+            //phone column
+            var td7 = document.createElement('td');
+            row.appendChild(td7);
+            var text7 = document.createTextNode(`${user.phone}`);
+            td7.appendChild(text7);
+            //website column
+            var td8 = document.createElement('td');
+            row.appendChild(td8);
+            var text8 = document.createTextNode(`${user.website}`);
+            td8.appendChild(text8);
+            //company name
+            var td9 = document.createElement('td');
+            row.appendChild(td9);
+            var text9 = document.createTextNode(`${user.company.name}`);
+            td9.appendChild(text9);
+
+
+        });
+
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+        
+        
+    </script>
+</html>
