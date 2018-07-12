@@ -9,25 +9,31 @@
 <body>
     <h2>Enquiry form</h2>
 
-    <form>
-        <label>Name</label>
-        <input type="text" name="name"/>
+    <form id="enquiryForm">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name"/>
         <br/>
 
-        <label for="">Mobile</label>
-        <input type="text" name="Mobile">
+        <label for="gender">Gender</label>
+        <input type="radio" id="male" name="gender" value="male"/>Male
+        <input type="radio" id="female" name="gender" value="female"/>Female
         <br/>
 
-        <label>Email</label>
-        <input type="email"/>
+
+        <label for="mobile">Mobile</label>
+        <input type="text" name="Mobile" id="mobile"/>
         <br/>
 
-        <label>DoB</label>
-        <input type="date"/>
+        <label for="email">Email</label>
+        <input type="email" id="email"/>
         <br/>
 
-        <label for="">Languages</label>
-        <select name="languages" id="">
+        <!-- <label for="dob">DoB</label>
+        <input type="date" id="dob"/>
+        <br/> -->
+
+        <label for="languages">Languages</label>
+        <select name="languages" id="language">
             <option value="">select</option>
             <option value="js">JavaScipt</option>
             <option value="rb">Ruby</option>
@@ -35,8 +41,8 @@
         </select>
         <br/>
 
-        <label for="">Courses</label>
-        <select name="Courses" id="">
+        <label for="courses">Courses</label>
+        <select name="Courses" id="courses">
             <option value="">Select</option>
             <option value="mern">MERN</option>
             <option value="react">React</option>
@@ -46,20 +52,86 @@
         <br/>
 
         <label for="">Preference</label>
-        <input type="radio" name="Preference" value="Weekday"/>Weekdays
-        <input type="radio" name="Preference" value="Weekend"/>Weekend
+        <input type="radio" name="Preference" value="Weekday" id="Weekdays"/>
+        <label for="Weekdays">Weekdays</label>
+        <input type="radio" name="Preference" value="Weekend" id="Weekend"/>
+        <label for="Weekend"> Weekend</label>
         <br/>
 
-        <label for="">Experience</label>
-        <input type="number" min="0"/>
+        <label for="experience">Experience</label>
+        <input type="number" min="0" id="experience"/>
         <br/>
 
-        <label for="">About you</label>
-        <textarea name="about"></textarea>
-        <br/>
+        <label for="about">About you</label>
+        <textarea name="about" value="about" id="about"></textarea>
+        <br/> 
 
         <input type="checkbox" name="permission">I agree to contact me
         <br/>
+
+        <input type="submit"/>
+        <input type="reset"/>
+        
     </form>
+    
+    <script>
+        var nameHandle = document.getElementById('name');
+        var mobileHandle = document.getElementById('mobile');
+        var emailHandle = document.getElementById('email');
+        var aboutHandle = document.getElementById('about');
+        var languageHandle = document.getElementById('language');
+        var courseHandle = document.getElementById('courses');
+        var weekendHandle = document.getElementById('Weekend');
+        var maleHandle = document.getElementById('male');
+
+        nameHandle.addEventListener('focus',function(){
+            console.log('inside name text field');
+        }, false);
+        nameHandle.addEventListener('blur', function(){
+            console.log('outside name text field');
+            console.log('you typed ', nameHandle.value);
+        }, false);
+
+        mobileHandle.addEventListener('focus',function(){
+            console.log('inside mobile text field')
+        }, false)
+        mobileHandle.addEventListener('blur', function(){
+            console.log('mobile number ',mobileHandle.value);
+            console.log('outside mobile text field')
+        }, false);
+
+        emailHandle.addEventListener('focus',function(){
+            console.log('you are inside email text field');
+        }, false);
+        emailHandle.addEventListener('blur', function(){
+            console.log('you are inside email tex field');
+            console.log('email ', emailHandle.value);
+        }, false);
+
+        aboutHandle.addEventListener('focus', function(){
+            console.log('you are inside text area');
+        }, false);
+        aboutHandle.addEventListener('blur', function(){
+            console.log('outside text area');
+            console.log('you typed', aboutHandle.value);
+        }, false);
+
+        languageHandle.addEventListener('change', function(){
+            console.log('you selcted', languageHandle.value);
+        }, false)
+
+        courseHandle.addEventListener('change', function(){
+            console.log('you selected ', courseHandle.value);
+        }, false);
+
+        weekendHandle.addEventListener('click', function(){
+            console.log('you clicked', weekendHandle.value);
+        }, false);
+
+        maleHandle.addEventListener('click', function(){
+            console.log('you clicked', maleHandle.value);
+        }, false);
+        
+    </script>
 </body>
 </html>
