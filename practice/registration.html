@@ -55,8 +55,9 @@
 
         var submitHandle = document.getElementById('submit');
         var successHandle = document.getElementById('success');
-        submitHandle.addEventListener('click', function(){
-            successHandle.innerHTML = 'Registered successfully!';
+        submitHandle.addEventListener('click', function(e){
+            e.preventDefault();
+        successHandle.innerHTML = 'Registered successfully!';
         });
         
     </script>

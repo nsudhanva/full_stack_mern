@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form  id="loginform" action="#">
+    <h2>LOGIN</h2>
+    <label for="username">USER NAME</label>
+    <input type="text" name="username" id="username">
+    <span id="usernameError"></span>
+    <br/>
+
+    <label for="password">PASSWORD</label>
+    <input type="password" name="password" id="password">
+    <span id="passwordError"></span>
+    </br>
+
+    <label for="" id="show">show password</label>
+    <br>
+
+    <input type="submit" name="login" id="" value="login">
+
+    </form>
+    <script>
+        var formHandle = document.getElementById('loginform');
+
+        var nameHandle = document.getElementById('username');
+        var nameErrorHandle = document.getElementById('usernameError');
+
+        var passwordHandle = document.getElementById('password');
+        var passwordErrorHandle = document.getElementById('passwordError');
+        
+        var showHandle = document.getElementById('show');
+
+        var Errors = {
+            username:true,
+            password:true
+        }
+
+        function validateUserName(){
+            if(nameHandle.value == ''){
+                console.log('validate name if');
+                nameErrorHandle.innerHTML = 'canot be empty';
+                Errors.username = true;
+            }
+            else{
+                console.log('validate name else');
+
+                nameErrorHandle.innerHTML = '';
+                Errors.username = false;
+            }
+        }
+
+        function validatePassword(){
+            if(passwordHandle.value == ''){
+                console.log('validate password if');
+
+                passwordErrorHandle.innerHTML = 'cannot be empty';
+                Errors.password = true;
+            }
+            else if(passwordHandle.value.length < 8 || passwordHandle.value.length > 120){
+                console.log('validate password else if');
+
+                passwordErrorHandle.innerHTML = 'minimum 8 characters';
+                Errors.password = true;
+            }
+            else{
+                console.log('validate password else');
+
+                passwordErrorHandle.innerHTML = '';
+                Errors.password = false;
+            }
+        }
+        
+        showHandle.addEventListener('mouseover', function(){
+            passwordHandle.setAttribute('type','text');
+        }, false);
+
+        showHandle.addEventListener('mouseout', function(){
+            passwordHandle.setAttribute('type','password');
+        }, false);
+
+        formHandle.addEventListener('submit', function(e){
+            validateUserName();
+            validatePassword();
+            console.log(Errors);
+            if(Object.values(Errors).includes(true)){
+                e.preventDefault();
+            }
+        }, false);  
+
+    </script>
+</body>
+</html>

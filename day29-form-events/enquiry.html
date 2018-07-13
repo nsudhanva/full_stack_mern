@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Enquiry form</h2>
+
+    <form id="enquiryForm" action="./index.html">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name"/>
+        <span id="nameError"></span>
+        <br/>
+
+        <label for="gender">Gender</label>
+        <input type="radio" id="male" name="gender" value="male"/>Male
+        <input type="radio" id="female" name="gender" value="female"/>Female
+        <br/>
+
+
+        <label for="mobile">Mobile</label>
+        <input type="text" name="Mobile" id="mobile"/>
+        <span id="mobileError"></span>
+        <br/>
+
+        <label for="email">Email</label>
+        <input type="email" id="email"/>
+        <br/>
+
+        <!-- <label for="dob">DoB</label>
+        <input type="date" id="dob"/>
+        <br/> -->
+
+        <label for="languages">Languages</label>
+        <select name="languages" id="language">
+            <option value="">select</option>
+            <option value="js">JavaScipt</option>
+            <option value="rb">Ruby</option>
+            <option value="py">Python</option>
+        </select>
+        <br/>
+
+        <label for="courses">Courses</label>
+        <select name="Courses" id="courses">
+            <option value="">Select</option>
+            <option value="mern">MERN</option>
+            <option value="react">React</option>
+            <option value="nodedjango">Node</option>
+            <option value="">Django</option>
+        </select>
+        <br/>
+
+        <label for="">Preference</label>
+        <input type="radio" name="Preference" value="Weekday" id="Weekdays"/>
+        <label for="Weekdays">Weekdays</label>
+        <input type="radio" name="Preference" value="Weekend" id="Weekend"/>
+        <label for="Weekend"> Weekend</label>
+        <br/>
+
+        <label for="experience">Experience</label>
+        <input type="number" min="0" id="experience"/>
+        <br/>
+
+        <label for="about">About you</label>
+        <textarea name="about" value="about" id="about"></textarea>
+        <br/> 
+
+        <input type="checkbox" name="permission">I agree to contact me
+        <br/>
+
+        <input type="submit"/>
+        <input type="reset"/>
+        
+    </form>
+    
+    <script>
+        var formHandle = document.getElementById('enquiryForm');
+
+       var nameHandle = document.getElementById('name');
+       var nameErrorHandle = document.getElementById('nameError');
+
+       var mobileHandle = document.getElementById('mobile');
+       var mobileErrorHandle = document.querySelector('#mobileError');//refers to span tag
+
+       var hasErrors = {
+           name: true,
+           mobile:true  
+       }
+
+        function validateName(){
+            if(nameHandle.value == ''){
+                //console.log('validate name if');
+                nameErrorHandle.innerHTML = 'cannot be empty';
+                hasErrors.name = true;
+            }
+            else{
+                //console.log('validate name else');
+                nameErrorHandle.innerHTML = '';
+                hasErrors.name = false;
+            }
+        };
+
+        function validateMobile(){
+            if(mobileHandle.value == ''){
+                //console.log('validate mobile if');
+
+                mobileErrorHandle.innerHTML = 'cannot be empty';
+                hasErrors.mobile = true;
+            }
+            else if(mobileHandle.value.length !== 10){
+               // console.log('validate mobile else if ');
+                mobileErrorHandle.innerHTML = 'should be 10 digits';
+                hasErrors.mobile  = true;
+            }
+            else{
+                //console.log('validate mobile else');
+                mobileErrorHandle.innerHTML = '';
+                hasErrors.mobile = false;
+            }
+        };
+
+        formHandle.addEventListener('submit', function(e){
+            validateName();
+            validateMobile();
+            //console.log(hasErrors);
+            if(Object.values(hasErrors).includes(true)){
+                e.preventDefault();
+            }
+    
+        }, false)
+
+    </script>
+</body>
+</html>
