@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My book list</h1>
+
+    <div id="books">
+
+    </div>
+    <script>
+        var books = [
+            {title: 'The Design of EveryDay Things',
+            img: 'http://ecx.images-amazon.com/images/I/41j2ODGkJDL._AA115_.jpg',
+            author: 'Don Norman',
+            alreadyRead: true
+            },
+            {title: 'The Most Human Human',
+            img: 'http://ecx.images-amazon.com/images/I/41Z56GwEv9L._AA115_.jpg',
+            author: 'Brian Christian',
+            alreadyRead: false
+            }];
+            
+            
+            books.forEach(function(book){
+                var booksHandle = document.getElementById('books');
+                var p = document.createElement('p');
+                p.setAttribute('id', 'paragraph');
+                booksHandle.appendChild(p);
+
+                var pHandle = document.getElementById('paragraph');
+
+                var ul = document.createElement('ul');
+                p.appendChild(ul);
+
+                var li = document.createElement('li');
+                li.setAttribute('id','li');
+                ul.appendChild(li);
+
+                var text = document.createTextNode(book.title);
+                li.appendChild(text);
+
+                if(book.alreadyRead == true){
+                    document.getElementById('li').style.color = 'red';
+                    li.appendChild(text);
+                }
+                
+                var br = document.createElement('br');
+
+                li.appendChild(br);
+
+                var img = document.createElement('img');
+                li.appendChild(img);
+                img.setAttribute('border','1px');
+                img.src = book.img;
+
+                
+
+
+
+
+
+
+            });
+           
+
+    </script>
+</body>
+</html>
