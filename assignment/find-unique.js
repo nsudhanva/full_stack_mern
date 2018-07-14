@@ -11,12 +11,19 @@
 // 6
 
 function findUnique(a){
-    var result = [];
-    a.forEach(function(ele){
-        if(result.indexOf(ele) == -1){
-            result.push(ele);
+        var x;
+        for(var i=0;i < a.length;i++){
+
+        var count = 0; 
+            for(j=0;j < a.length;j++){
+                if(a[i] == a[j]) 
+                count++;
+            } 
+        if(count==1) 
+            x = a[i];
         }
-    });
+        return x;
+
     
 }
 console.log(findUnique([ 1, 8, 4, 4, 6, 1, 8 ]));
