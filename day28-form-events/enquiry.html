@@ -41,15 +41,9 @@
         </select>
         <br/>
 
-        <label for="courses">Courses</label>
-        <select name="Courses" id="courses">
-            <option value="">Select</option>
-            <option value="mern">MERN</option>
-            <option value="react">React</option>
-            <option value="nodedjango">Node</option>
-            <option value="">Django</option>
-        </select>
-        <br/>
+        <label for="">course</label>
+        <select name="course" id="course"></select>
+        <br/> 
 
         <label for="">Preference</label>
         <input type="radio" name="Preference" value="Weekday" id="Weekdays"/>
@@ -80,9 +74,16 @@
         var emailHandle = document.getElementById('email');
         var aboutHandle = document.getElementById('about');
         var languageHandle = document.getElementById('language');
-        var courseHandle = document.getElementById('courses');
         var weekendHandle = document.getElementById('Weekend');
         var maleHandle = document.getElementById('male');
+        var courseHandle = document.getElementById('course');
+        
+        var lanArray= [{name:'MERN', language:'js'},{name:'React', language:'js'},
+        {name:'Rails', language:'rb'}];
+
+        languageHandle.addEventListener('change', function(){
+            
+        }, false);
 
         nameHandle.addEventListener('focus',function(){
             console.log('inside name text field');
@@ -116,13 +117,18 @@
             console.log('you typed', aboutHandle.value);
         }, false);
 
-        languageHandle.addEventListener('change', function(){
-            console.log('you selcted', languageHandle.value);
-        }, false)
-
-        courseHandle.addEventListener('change', function(){
-            console.log('you selected ', courseHandle.value);
-        }, false);
+       languageHandle.addEventListener('change', function(){
+           var input = languageHandle.value;
+           console.log(input);
+           lanArray.forEach(function(ele){
+               if(ele.language == input){
+                   var option = document.createElement('option');
+                   option.setAttribute('value', ele.name);
+                   option.innerHTML = ele.name;
+                   courseHandle.appendChild(option);
+               }
+           })
+       },false);
 
         weekendHandle.addEventListener('click', function(){
             console.log('you clicked', weekendHandle.value);
