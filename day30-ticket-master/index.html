@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket Master - Call Center App</title>
+</head>
+<body>
+    <h2>Ticket Master</h2>
+    <h3>Listing Tickets - <span id="count">fetching...</span></h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Priority</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+           
+        </tbody>
+    </table>
+
+    <br/>
+    <fieldset>
+        <form id="ticketForm">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" /> 
+            <label for="name" id="nameError"></label>
+            <br/>
+
+            <label for="department">Department</label>
+            <select id="department" name="department">
+                <option value="" >Select</option>
+                <option value="Technical">Technical</option>
+                <option value="Sales">Sales</option>
+                <option value="Hr">Hr</option>
+            </select>
+            <label id="departmentError"></label>
+            <br/>
+
+            <label for="priority">Priority</label> 
+
+            <input type="radio" id="high" value="High" name="priority"><label for="high"> High</label> 
+            
+
+            <input type="radio" id="medium" value="Medium" name="priority">
+            <label for="medium"> Medium</label>
+
+            <input type="radio" id="low" value="Low" name="priority">
+            <label for="low"> Low </label>
+
+            <label for="priority" id="priorityError"></label>
+            <br/>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea> <br/>
+
+            <input type="submit" /> <input type="reset" />
+        </form>
+    </fieldset>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"> </script>
+</body>
+</html>
