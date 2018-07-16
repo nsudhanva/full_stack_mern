@@ -19,8 +19,17 @@ var text = document.createTextNode('select priority');
 
 
 var messageHandle = document.getElementById('message'); 
+var messageErrorHandle = document.getElementById('messageError');
+
+var hasError = {
+    name:true,
+    department:true,
+    priority:true,
+    message:true
+}
 
 function buildRow(ticket){
+    console.log('building row')
     var tr = document.createElement('tr');
 
     tr.innerHTML = `
@@ -35,6 +44,7 @@ function buildRow(ticket){
 
 axios.get(`${baseUrl}/tickets?api_key=${key}`)
 .then(function(response){
+    console.log('getting response');
     var tickets = response.data; 
     countHandle.innerHTML = tickets.length; 
     tickets.forEach(function(ticket){
@@ -54,22 +64,28 @@ function getPriorityValue(){
 }
 
 function validateName(){
-    var nameValue = true;
+    console.log('validating name');
     if(nameHandle.value.length == 0){
         nameErrorHandle.innerHTML = 'name cannot be empty'; 
+    }
+    else{
+        hasError.name = false;
     }
 };
 
 function validateDepartment(){
-    var invalid = departmentHandle.value = '';
-    if(departmentHandle.value == invalid){
-        console.log(departmentHandle.value);
+    console.log('validating department');
+    if(departmentHandle.value == ''){
         var depText = document.createTextNode('select department');
         departmentErrorHandle.appendChild(depText);
+    }
+    else{
+        hasError.department = false;
     }
 };
 
 function validatePriority(){  
+    console.log('validating priority');
     var result = false; 
     priorityNames.forEach(function(name){
         if(name.checked == true){
@@ -80,25 +96,43 @@ function validatePriority(){
     if(result == false){
         priorityErrorHandle.appendChild(text);
     }
+    else{
+        hasError.priority = false;
+    }
 }
 
 function validateMessage(){
-    
-}
+    console.log('validating message');
+
+        if(messageHandle.value == ''){
+            var messageErrorText = document.createTextNode('Enter message');
+            messageErrorHandle.appendChild(messageErrorText);   
+        }
+        else{
+            hasError.message = false;
+        }
+    }
 
 ticketFormHandle.addEventListener('submit', function(e){
-    validateName();
-    validateDepartment();
-    validatePriority();
+    
     var formData = {
         name: nameHandle.value,
         department: departmentHandle.value,
         priority: getPriorityValue(),
         message: messageHandle.value 
-    }; 
+    };
 
-    axios.post(`${baseUrl}/tickets?api_key=${key}`, formData)
-    .then(function(response){
+    validateName();
+    validateDepartment();
+    validatePriority();
+    validateMessage();
+
+    if(Object.values(hasError).includes(true)){
+        e.preventDefault();
+    }
+    else{
+        axios.post(`${baseUrl}/tickets?api_key=${key}`, formData)
+        .then(function(response){
         var ticket = response.data; 
         buildRow(ticket); 
         countHandle.innerHTML = parseInt(countHandle.innerHTML) + 1; 
@@ -106,7 +140,7 @@ ticketFormHandle.addEventListener('submit', function(e){
     })
     .catch(function(err){
         console.log(err); 
-    })
-
-    console.log(formData); 
+     })   
+}
+console.log(formData); 
 }, false); 
