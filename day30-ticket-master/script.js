@@ -44,7 +44,7 @@ function buildRow(ticket){
 
 axios.get(`${baseUrl}/tickets?api_key=${key}`)
 .then(function(response){
-    console.log('getting response');
+    console.log(response.data);
     var tickets = response.data; 
     countHandle.innerHTML = tickets.length; 
     tickets.forEach(function(ticket){
@@ -114,13 +114,6 @@ function validateMessage(){
     }
 
 ticketFormHandle.addEventListener('submit', function(e){
-    
-    var formData = {
-        name: nameHandle.value,
-        department: departmentHandle.value,
-        priority: getPriorityValue(),
-        message: messageHandle.value 
-    };
 
     validateName();
     validateDepartment();
@@ -131,8 +124,17 @@ ticketFormHandle.addEventListener('submit', function(e){
         e.preventDefault();
     }
     else{
+            
+    var formData = {
+        name: nameHandle.value,
+        department: departmentHandle.value,
+        priority: getPriorityValue(),
+        message: messageHandle.value 
+    };
+
         axios.post(`${baseUrl}/tickets?api_key=${key}`, formData)
         .then(function(response){
+            console.log(response.data)
         var ticket = response.data; 
         buildRow(ticket); 
         countHandle.innerHTML = parseInt(countHandle.innerHTML) + 1; 
