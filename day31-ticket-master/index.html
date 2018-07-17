@@ -9,11 +9,22 @@
 <body>
     <h2>Ticket Master</h2>
     <h3>Listing Tickets - <span id="count">fetching...</span></h3>
-    
-    <button id="all">All</button>
+
+    <input type="text" placeholder="search by code" id="search">
+    <br>
+
+    <!-- <button id="all">All</button>
     <button id="high">High</button>
     <button id="medium">Medium</button>
-    <button id="low">Low</button>
+    <button id="low">Low</button> -->
+
+    <select name="" id="select">
+        <option value="All">All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+
+    </select>
 
     <table border="1">
         <thead>
@@ -23,6 +34,7 @@
                 <th>Department</th>
                 <th>Priority</th>
                 <th>Message</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody id="tableBody">

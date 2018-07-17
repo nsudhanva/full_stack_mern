@@ -42,18 +42,7 @@ function buildRow(ticket){
     tableBodyHandle.appendChild(tr); 
 }
 
-axios.get(`${baseUrl}/tickets?api_key=${key}`)
-.then(function(response){
-    console.log(response.data);
-    var tickets = response.data; 
-    countHandle.innerHTML = tickets.length; 
-    tickets.forEach(function(ticket){
-        buildRow(ticket); 
-    })
-})
-.catch(function(err){
 
-})
 
 function getPriorityValue(){
     for(var i = 0; i < priorityNames.length; i++) {
@@ -96,7 +85,7 @@ function validatePriority(){
     if(result == false){
         priorityErrorHandle.appendChild(text);
     }
-    else{
+    else{   
         hasError.priority = false;
     }
 }
@@ -144,5 +133,19 @@ ticketFormHandle.addEventListener('submit', function(e){
         console.log(err); 
      })   
 }
-console.log(formData); 
 }, false); 
+
+window.addEventListener('load',function(){
+    axios.get(`${baseUrl}/tickets?api_key=${key}`)
+.then(function(response){
+    console.log(response.data);
+    var tickets = response.data; 
+    countHandle.innerHTML = tickets.length; 
+    tickets.forEach(function(ticket){
+        buildRow(ticket); 
+    });
+})
+.catch(function(err){
+    console.log(err);
+})
+})
