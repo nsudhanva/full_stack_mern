@@ -1,6 +1,7 @@
 var baseUrl = 'http://dct-api-data.herokuapp.com'
-var key = '671a7695f19b162f';
+var key = 'adaed46e71037faa';
 
+var idHandle = document.getElementById('id');
 var countHandle = document.getElementById('count');
 var tableBodyHandle = document.getElementById('tableBody');
 var ticketFormHandle = document.getElementById('ticketForm'); 
@@ -18,11 +19,20 @@ var lowHandle = document.getElementById('low');
 
 var searchHandle = document.getElementById('search');
 
+var alertHandle = document.getElementById('alert');
+
+var showHandle = document.getElementById('show');
+
+var showCount;
+var showText;
+
+var count;
 var tickets; 
 
 function filterTickets(priority){
+    
     tableBodyHandle.innerHTML = '';
-    var count = 0;
+    count = 0;
     tickets.forEach(function (ticket) {
         if (ticket.priority === priority) {
             count++;
@@ -33,16 +43,24 @@ function filterTickets(priority){
 }
 
 searchHandle.addEventListener('keyup',function(){
-   tableBodyHandle.innerHTML = '';
-   var searchResults = tickets.filter(function(ticket){
-        return ticket.ticket_code.toLowerCase().indexOf(searchHandle.value.toLowerCase()) >= 0; 
+
+    idCount = 1;
+
+    tableBodyHandle.innerHTML = '';
+    var searchResults = tickets.filter(function(ticket){
+        return (ticket.ticket_code.toLowerCase().indexOf(searchHandle.value.toLowerCase()) >= 0 ||ticket.ticket_code.toLowerCase().indexOf(searchHandle.value.toLowerCase()) >= 0 || ticket.priority.toLowerCase().includes(searchHandle.value) || (ticket.department.toLowerCase().includes(searchHandle.value))); 
    });
 
    searchResults.forEach(function(ticket){
         buildRow(ticket); 
    })
-   countHandle.innerHTML = searchResults.length; 
+
+   countHandle.innerHTML = searchResults.length;
+
+   showHandle.innerHTML = '';
+   showText = document.createTextNode(`showing ${idCount - 1 } of ${showCount}  results`);showHandle.appendChild(showText); 
 }, false);
+
 
 
 highHandle.addEventListener('click', function(){
@@ -65,10 +83,15 @@ allHandle.addEventListener('click', function () {
     countHandle.innerHTML = tickets.length;
 }, false);
 
-function buildRow(ticket){
-    var tr = document.createElement('tr');
 
+var idCount = 1;
+
+function buildRow(ticket){
+
+    var tr = document.createElement('tr');
+    
     tr.innerHTML = `
+        <td>${idCount++}</td>
         <td>${ticket.ticket_code}</td>
         <td>${ticket.name}</td>
         <td>${ticket.department}</td>
@@ -78,10 +101,13 @@ function buildRow(ticket){
     tableBodyHandle.appendChild(tr); 
 }
 
+
 function getTickets() {
     axios.get(`${baseUrl}/tickets?api_key=${key}`)
         .then(function (response) {
             tickets = response.data;
+            showCount = tickets.length;
+            
             countHandle.innerHTML = tickets.length;
             tickets.forEach(function (ticket) {
                 buildRow(ticket);
@@ -101,6 +127,7 @@ function getPriorityValue(){
     }
 }
 
+
 ticketFormHandle.addEventListener('submit', function(e){
     e.preventDefault(); 
     var formData = {
@@ -113,9 +140,23 @@ ticketFormHandle.addEventListener('submit', function(e){
     axios.post(`${baseUrl}/tickets?api_key=${key}`, formData)
     .then(function(response){
         var ticket = response.data; 
+        
+      //  showText = document.createTextNode(`showing ${showCount} results`);
+       
+        console.log(showText.value);
+
         buildRow(ticket); 
+        
         countHandle.innerHTML = parseInt(countHandle.innerHTML) + 1; 
-        ticketFormHandle.reset(); 
+        ticketFormHandle.reset();
+        
+        alertHandle.innerHTML = '<div class="alert alert-primary" role="alert">Added successfully</div>'
+        setTimeout(function(){
+            alertHandle.innerHTML = '';
+        }, 3000);
+
+       
+
     })
     .catch(function(err){
         console.log(err); 
@@ -124,6 +165,6 @@ ticketFormHandle.addEventListener('submit', function(e){
 }, false); 
 
 window.addEventListener('load', function(){
-    // console.log('page has been loaded')
     getTickets(); 
+
 }, false);
