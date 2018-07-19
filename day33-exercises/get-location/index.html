@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Get Location</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">    
+</head>
+<body>
+    <div class="container">
+        <div class="h-100 row align-items-center">
+            <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg mb-3" id="btn">Get My Location</button>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-mid-12">
+                Your current position is
+            </div>
+            <div class="row">
+                <div class="col-mid-12">
+                    <!-- <span id="result">Latitude: <br> longitude: </span> -->
+                        <span id="lat"></span>
+                        <br>
+                        <span id="long"></span>
+                        <br>
+                        <span id="temp"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+
+</html>
