@@ -44,7 +44,7 @@ function filterTickets(priority){
 
 searchHandle.addEventListener('keyup',function(){
 
-    idCount = 1;
+    idCount = 1; //re initialising id count for updation in search bar part 
 
     tableBodyHandle.innerHTML = '';
     var searchResults = tickets.filter(function(ticket){
@@ -57,7 +57,7 @@ searchHandle.addEventListener('keyup',function(){
 
    countHandle.innerHTML = searchResults.length;
 
-   showHandle.innerHTML = '';
+   showHandle.innerHTML = '';  // resets the showing search results every time
    showText = document.createTextNode(`showing ${idCount - 1 } of ${showCount}  results`);showHandle.appendChild(showText); 
 }, false);
 
@@ -84,14 +84,14 @@ allHandle.addEventListener('click', function () {
 }, false);
 
 
-var idCount = 1;
+var idCount = 1; //id count initialisation
 
 function buildRow(ticket){
 
     var tr = document.createElement('tr');
     
     tr.innerHTML = `
-        <td>${idCount++}</td>
+        <td>${idCount++}</td> 
         <td>${ticket.ticket_code}</td>
         <td>${ticket.name}</td>
         <td>${ticket.department}</td>
