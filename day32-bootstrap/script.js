@@ -23,11 +23,17 @@ var alertHandle = document.getElementById('alert');
 
 var showHandle = document.getElementById('show');
 
+
+
 var showCount;
 var showText;
 
 var count;
 var tickets; 
+var inputs;
+
+var isCompleteCount = 0;
+
 
 function filterTickets(priority){
     
@@ -41,6 +47,8 @@ function filterTickets(priority){
     });
     countHandle.innerHTML = count; 
 }
+
+
 
 searchHandle.addEventListener('keyup',function(){
 
@@ -84,8 +92,23 @@ allHandle.addEventListener('click', function () {
 }, false);
 
 
+
 var idCount = 1; //id count initialisation
 
+function clickme(evt){
+    
+    console.log(this);
+    console.log('event id',evt.id);
+
+    // url = `${baseUrl}/tickets/${evt.id}?api_key=${key}`
+    // axios.patch(url,{"status":"completed"})
+    // .then(function(response){
+    //      console.log('from click me',response.data); 
+    //  })
+    //  .catch(function(err){
+    //      console.log(err);
+    //  })
+};
 function buildRow(ticket){
 
     var tr = document.createElement('tr');
@@ -97,8 +120,11 @@ function buildRow(ticket){
         <td>${ticket.department}</td>
         <td>${ticket.priority}</td>
         <td>${ticket.message}</td> 
+        
+        <td><input type="checkbox" ${ticket.status == 'completed'? 'checked':''} id="${ticket.ticket_code}" onclick="clickme(this)"/></td>
     `;
     tableBodyHandle.appendChild(tr); 
+    
 }
 
 
@@ -111,13 +137,33 @@ function getTickets() {
             countHandle.innerHTML = tickets.length;
             tickets.forEach(function (ticket) {
                 buildRow(ticket);
+
             })
+            
+            inputs = tableBodyHandle.getElementsByTagName('input');
+            var checkHandle = tableBodyHandle.getElementsByTagName('input');
+            console.log(checkHandle);
+            for(var key in checkHandle){
+                checkHandle.addEventListener('change', function(){
+                    console.log('print');
+                    for(var i = 0;i < inputs.length;i++){
+                    
+                        if(inputs[i].checked){
+                            console.log(inputs[i]);
+                        }
+                    }
+        
+                    
+                });
+            }
+            
+            
+            
+           
         })
         .catch(function (err) {
 
         });
-}
-
 
 function getPriorityValue(){
     for(var i = 0; i < priorityNames.length; i++) {
@@ -126,7 +172,7 @@ function getPriorityValue(){
         }
     }
 }
-
+}
 
 ticketFormHandle.addEventListener('submit', function(e){
     e.preventDefault(); 
@@ -155,16 +201,18 @@ ticketFormHandle.addEventListener('submit', function(e){
             alertHandle.innerHTML = '';
         }, 3000);
 
-       
+        
 
     })
+    
     .catch(function(err){
         console.log(err); 
     })
 
 }, false); 
 
+
+
 window.addEventListener('load', function(){
     getTickets(); 
-
 }, false);
