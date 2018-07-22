@@ -201,8 +201,6 @@ ticketFormHandle.addEventListener('submit', function(e){
             alertHandle.innerHTML = '';
         }, 3000);
 
-        
-
     })
     
     .catch(function(err){
@@ -210,8 +208,6 @@ ticketFormHandle.addEventListener('submit', function(e){
     })
 
 }, false); 
-
-
 
 window.addEventListener('load', function(){
     getTickets(); 

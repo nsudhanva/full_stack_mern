@@ -13,7 +13,7 @@ Array.prototype.unique = function(){
     return result;
 }
 
-Array.prototype.first = function(){
+Array.prototype.first = function(){     
     return this[0];
 }
 Array.prototype.last = function(){
