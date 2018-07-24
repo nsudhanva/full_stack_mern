@@ -11,10 +11,10 @@
 // 6
 
 function findUnique(a){
-        var x;
-        for(var i=0;i < a.length;i++){
+        let x;
+        for(let i=0;i < a.length;i++){
 
-        var count = 0; 
+        let count = 0; 
             for(j=0;j < a.length;j++){
                 if(a[i] == a[j]) 
                 count++;

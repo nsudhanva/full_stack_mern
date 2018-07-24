@@ -1,9 +1,9 @@
 function Capitalize_Words(string){
-	var temp = [];
+	let temp = [];
 	temp = string.split(' ');
-	var result = '';
-	for(var i = 0; i < temp.length;i++){
-		var prev = temp[i].charAt(0).toUpperCase();
+	let result = '';
+	for(let i = 0; i < temp.length;i++){
+		let prev = temp[i].charAt(0).toUpperCase();
 		result = result + prev + temp[i].slice(1) + ' ';
 	}
 	return result;

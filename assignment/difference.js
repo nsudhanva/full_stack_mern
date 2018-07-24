@@ -1,13 +1,13 @@
 function difference(a,b){ 
-	var result = [];
-    for(var i = 0;i < a.length;i++){
+	let result = [];
+    for(let i = 0;i < a.length;i++){
 	 result.push(a[i]);
 	}
-	for(var j = 0;j < b.length;j++){
+	for(let j = 0;j < b.length;j++){
 		result.push(b[j]);
 	}
-	var unique = [];
-	for(var k = 0;k < result.length;k++){
+	let unique = [];
+	for(let k = 0;k < result.length;k++){
 		if((unique.indexOf(result[k]) )== -1){
 			unique.push(result[k]);
 		}

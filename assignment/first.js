@@ -1,5 +1,5 @@
 function firstElements(a,b){
-	var result = [];
+	let result = [];
 	if(a == [] || b < 0){
 		return [];
 	}
@@ -8,17 +8,17 @@ function firstElements(a,b){
 	}
 	else if(a != null && b > 0){
 		if(b > a.length){
-			for(var i = 0;i < a.length;i++){
+			for(let i = 0;i < a.length;i++){
 				result.push(a[i]);
 			}
 		}
 		else{
-			for(var i = 0;i < b;i++){
+			for(let i = 0;i < b;i++){
 			result.push(a[i]);
 			}
 		}
 	}
 	return result;
 }
-	var a = [7,9,0,-2];
+	let a = [7,9,0,-2];
 	console.log(firstElements(a));

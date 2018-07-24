@@ -1,7 +1,7 @@
 function chopString(a,b){
-    var result = [];
-    var len = a.length;
-    for(var i = 0;i < len;i++){
+    let result = [];
+    let len = a.length;
+    for(let i = 0;i < len;i++){
     result.push(a.slice(0,b)); 
     console.log(result);
     a = a.slice(b);     

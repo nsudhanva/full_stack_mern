@@ -1,7 +1,7 @@
 
 function incDec(number)
 {
-    var i = 0;
+    let i = 0;
     while(i <= number)
     {
         
@@ -23,7 +23,7 @@ function incDec(number)
     return res;
 }
 
-var number = 2;
-var num = 0;
-var res = [];
+let number = 2;
+let num = 0;
+let res = [];
 console.log(incDec(number));

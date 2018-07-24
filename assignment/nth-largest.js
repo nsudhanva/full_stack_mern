@@ -8,7 +8,7 @@
 // return 20
 
 function nthLargest(a,b){
-   var sorted = a.sort();
+   let sorted = a.sort();
    return sorted[b];
 }
 console.log(nthLargest([ 43, 56, 23, 89, 88, 90, 99, 652], 4));

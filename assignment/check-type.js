@@ -1,5 +1,5 @@
 function clearArray(a){
-    var result = [];
+    let result = [];
     a.forEach(function(value){
         if(value){
             result.push(value);  

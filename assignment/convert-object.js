@@ -5,7 +5,7 @@
 // Output:   [['name','Rama'],['city','Ayodya']]
 
 function keyValue(a){
-    var result = Object.keys(a).map(function(key) {
+    let result = Object.keys(a).map(function(key) {
         return [key, a[key]];
       });
       return result;

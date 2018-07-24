@@ -3,10 +3,10 @@ function move(a,b,c){
 		return 'empty array';
 	}
 	else if(b == undefined || b > a.length){
-		return 'element not present at the given idex';
+		return 'element not present at the given index';
 	}
 	else{
-		var temp = a[c];
+		let temp = a[c];
 		a[c] = a[b];
 		a[b] = a[c-1];
 		a[c-1] = temp;
