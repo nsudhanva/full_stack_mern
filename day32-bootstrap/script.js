@@ -23,6 +23,7 @@ var alertHandle = document.getElementById('alert');
 
 var showHandle = document.getElementById('show');
 
+var progressHandle = document.getElementById('progress');
 
 
 var showCount;
@@ -32,7 +33,6 @@ var count;
 var tickets; 
 var inputs;
 
-var isCompleteCount = 0;
 
 
 function filterTickets(priority){
@@ -94,20 +94,42 @@ allHandle.addEventListener('click', function () {
 
 
 var idCount = 1; //id count initialisation
+var progress = 0;
+var percent = 0;
 
 function clickme(evt){
-    
-    console.log(this);
-    console.log('event id',evt.id);
+        if(evt.checked){
+            url = `${baseUrl}/tickets/${evt.id}?api_key=${key}`
+            console.log(url);
+            axios.put(url,{"status":"completed"})
+            .then(function(response){
+                console.log(response.data);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+            progress += 1;
+            percent = progress/tickets.length * 100;
+            progressHandle.setAttribute('style',`width:${percent}%`);
+            console.log(progress,tickets.length,percent);
+        }
+        else{
+            url = `${baseUrl}/tickets/${evt.id}?api_key=${key}`
+            console.log(url);
+            axios.put(url,{"status":"open"})
+            .then(function(response){
+                console.log(response.data);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+            progress -= 1;
+            percent = progress/tickets.length * 100;
+            progressHandle.setAttribute('style',`width:${percent}%`);
+            console.log(progress);
 
-    // url = `${baseUrl}/tickets/${evt.id}?api_key=${key}`
-    // axios.patch(url,{"status":"completed"})
-    // .then(function(response){
-    //      console.log('from click me',response.data); 
-    //  })
-    //  .catch(function(err){
-    //      console.log(err);
-    //  })
+        }
+    
 };
 function buildRow(ticket){
 
@@ -140,22 +162,8 @@ function getTickets() {
 
             })
             
-            inputs = tableBodyHandle.getElementsByTagName('input');
-            var checkHandle = tableBodyHandle.getElementsByTagName('input');
-            console.log(checkHandle);
-            for(var key in checkHandle){
-                checkHandle.addEventListener('change', function(){
-                    console.log('print');
-                    for(var i = 0;i < inputs.length;i++){
-                    
-                        if(inputs[i].checked){
-                            console.log(inputs[i]);
-                        }
-                    }
-        
-                    
-                });
-            }
+           
+            
             
             
             
