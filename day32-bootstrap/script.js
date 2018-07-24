@@ -25,6 +25,7 @@ var showHandle = document.getElementById('show');
 
 var progressHandle = document.getElementById('progress');
 
+var pieHandle = document.getElementById('pie');
 
 var showCount;
 var showText;
@@ -91,7 +92,12 @@ allHandle.addEventListener('click', function () {
     countHandle.innerHTML = tickets.length;
 }, false);
 
-
+var techOpenCount = 0;
+var techCloseCount = 0;
+var salesOpenCount;
+var salesCloseCount;
+var hrOpenCount;
+var hrClosecount;
 
 var idCount = 1; //id count initialisation
 var progress = 0;
@@ -103,12 +109,15 @@ function clickme(evt){
             console.log(url);
             axios.put(url,{"status":"completed"})
             .then(function(response){
-                console.log(response.data);
+                
             })
             .catch(function(err){
                 console.log(err);
             })
-            progress += 1;
+            console.log(progress);
+            progress++;
+            console.log(progress);
+
             percent = progress/tickets.length * 100;
             progressHandle.setAttribute('style',`width:${percent}%`);
             console.log(progress,tickets.length,percent);
@@ -123,7 +132,7 @@ function clickme(evt){
             .catch(function(err){
                 console.log(err);
             })
-            progress -= 1;
+            progress--;
             percent = progress/tickets.length * 100;
             progressHandle.setAttribute('style',`width:${percent}%`);
             console.log(progress);
@@ -131,6 +140,9 @@ function clickme(evt){
         }
     
 };
+
+
+
 function buildRow(ticket){
 
     var tr = document.createElement('tr');
@@ -155,23 +167,73 @@ function getTickets() {
         .then(function (response) {
             tickets = response.data;
             showCount = tickets.length;
-            
             countHandle.innerHTML = tickets.length;
             tickets.forEach(function (ticket) {
                 buildRow(ticket);
 
             })
             
-           
-            
-            
-            
-            
-           
+            function chart(tickets) {
+                
+                    var techOpen = tickets.filter(function(ticket){
+                        return ticket.department == 'Technical' && ticket.status == 'open';
+                    });
+                    techOpenCount = techOpen.length;
+                    var salOpen  = tickets.filter(function(ticket){
+                        return ticket.department == 'Sales' && ticket.status == 'open';
+                    });
+                    salesOpenCount = salOpen.length;
+                    var hrOpen  = tickets.filter(function(ticket){
+                        return ticket.department == 'Hr' && ticket.status == 'open';
+                    });
+                    hrOpenCount = hrOpen.length;
+
+                    var techClose = tickets.filter(function(ticket){
+                        return ticket.department == 'Technical' && ticket.status == 'completed';
+                    });
+                    techCloseCount = techClose.length;
+                    var salClose  = tickets.filter(function(ticket){
+                        return ticket.department == 'Sales' && ticket.status == 'completed';
+                    });
+                    salesCloseCount = salClose.length;
+                    var hrClose  = tickets.filter(function(ticket){
+                        return ticket.department == 'Hr' && ticket.status == 'completed';
+                    });
+                    hrCloseCount = hrClose.length;
+
+
+            var myChart = Highcharts.chart('container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Tickets By Department'
+                },
+                xAxis: {
+                    categories: ['sales','Technical','HR']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Status'
+                    }
+                },
+                series: [{
+                    name: 'open',
+                    data: [techOpenCount,salesOpenCount,hrOpenCount]
+                }, {
+                    name: 'complete',
+                    data: [techCloseCount,salesCloseCount,hrCloseCount]
+                }]
+            });
+        };
+        chart(tickets);
+  
         })
         .catch(function (err) {
 
         });
+
+
 
 function getPriorityValue(){
     for(var i = 0; i < priorityNames.length; i++) {
@@ -181,6 +243,7 @@ function getPriorityValue(){
     }
 }
 }
+
 
 ticketFormHandle.addEventListener('submit', function(e){
     e.preventDefault(); 
@@ -194,10 +257,6 @@ ticketFormHandle.addEventListener('submit', function(e){
     axios.post(`${baseUrl}/tickets?api_key=${key}`, formData)
     .then(function(response){
         var ticket = response.data; 
-        
-      //  showText = document.createTextNode(`showing ${showCount} results`);
-       
-        console.log(showText.value);
 
         buildRow(ticket); 
         
@@ -219,4 +278,8 @@ ticketFormHandle.addEventListener('submit', function(e){
 
 window.addEventListener('load', function(){
     getTickets(); 
+
 }, false);
+
+
+
