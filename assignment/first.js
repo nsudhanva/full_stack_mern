@@ -1,4 +1,4 @@
-function firstElements(a,b){
+var firstElements = (a, b) => {
 	let result = [];
 	if(a == [] || b < 0){
 		return [];

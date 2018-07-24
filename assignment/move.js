@@ -1,4 +1,4 @@
-function move(a,b,c){
+var move = (a, b, c) => {
 	if(a.length == 0){
 		return 'empty array';
 	}

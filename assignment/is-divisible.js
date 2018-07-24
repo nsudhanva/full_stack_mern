@@ -6,7 +6,7 @@
 // OUTPUT: true
 // INPUT:isDivisible(9, 4);
 // OUTPUT:false
-function isDivisible(a,b){
+var isDivisible = (a, b) => {
     if(a % b == 0){
         return true;
     }
@@ -14,3 +14,4 @@ function isDivisible(a,b){
         return false;
     }
 }
+console.log(isDivisible(9, 3));

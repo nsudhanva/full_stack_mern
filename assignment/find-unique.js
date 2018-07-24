@@ -10,7 +10,7 @@
 
 // 6
 
-function findUnique(a){
+var findUnique = (a) => {
         let x;
         for(let i=0;i < a.length;i++){
 

@@ -1,4 +1,4 @@
-function factorial(a){
+var factorial = (a) => {
 	let fact = 1;
 	if(a == 0){
 		return 1;

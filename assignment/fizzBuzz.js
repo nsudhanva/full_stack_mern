@@ -16,7 +16,7 @@
 // INPUT: fizzBuzz(7)
 // OUTPUT: ''
 
-function fizzBuzz(a){
+var fizzBuzz = (a) => {
     if((a % 3) === 0 && (a % 15 != 0)){
         return 'Fizz';
     }

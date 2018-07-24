@@ -1,4 +1,4 @@
-function isString(str){
+var isString  = (str) => {
     if(typeof str == 'string'){
     return true;        
     }

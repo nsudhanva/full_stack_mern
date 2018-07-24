@@ -6,8 +6,7 @@
 
 // 2. nthlargest([10,5,20,25],2);
 // return 20
-
-function nthLargest(a,b){
+const nthLargest = (a,b) => {
    let sorted = a.sort();
    return sorted[b];
 }

@@ -4,11 +4,11 @@
 
 // Output:   [['name','Rama'],['city','Ayodya']]
 
-function keyValue(a){
+var keyValue = (a) => {
     let result = Object.keys(a).map(function(key) {
         return [key, a[key]];
       });
       return result;
 }
-a = {'name':'Rama','city':'Ayodya'}
+let a = {'name':'Rama','city':'Ayodya'}
 console.log(keyValue(a));

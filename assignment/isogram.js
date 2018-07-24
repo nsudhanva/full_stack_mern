@@ -4,7 +4,7 @@
 // isIsogram( "aba" ) == false
 // isIsogram( "moOse" ) == false // -- ignore letter case
 
-function isIsogram(word){
+var isIsogram = (word) => {
     let first_array = [];
     first_array = word.split('');
     console.log(first_array);

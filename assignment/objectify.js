@@ -12,7 +12,7 @@
 //   }
 var data = [[ 'animals',['dogs', ['Corgi', 'Sheltie'],'cats', ['Tabby','Black'],'pigs', ['Teacup']]],
     [ 'guitars',['Fender', ['Telecaster', 'Stratocaster','Jazzmaster'],'Gibson', ["Gibson Flying-V",'Firebird', 'Les Paul']]]];
-    function objectifier(a){
+    var objectifier = (a) => {
         let obj = {};
            for(let i = 0; i < a.length; i++) {
                let firstkey = a[i][0];

@@ -1,4 +1,4 @@
-function difference(a,b){ 
+var difference= (a,b) => { 
 	let result = [];
     for(let i = 0;i < a.length;i++){
 	 result.push(a[i]);

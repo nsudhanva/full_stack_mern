@@ -100,7 +100,7 @@ var products = [
     // }
 
     // console.log(findByCategory(products,'Computers'));
-    function findProduct(a,b){
+    var findProduct = (a,b) => {
         if(b > 10){
            return `No product found with id = ${b}`	
        }

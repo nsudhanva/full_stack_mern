@@ -1,4 +1,4 @@
-function clearArray(a){
+var clearArray = (a) => {
     let result = [];
     a.forEach(function(value){
         if(value){

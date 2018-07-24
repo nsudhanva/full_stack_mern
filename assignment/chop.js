@@ -1,4 +1,4 @@
-function chopString(a,b){
+var chopString = (a,b) => {
     let result = [];
     let len = a.length;
     for(let i = 0;i < len;i++){

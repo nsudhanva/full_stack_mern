@@ -6,7 +6,7 @@
 
 // 2. fakeBinary('1234') returns '0000'
 
-function fakeBinary(a){
+var fakeBinary = (a) => {
     let result = '';
     let arr = a.split('');
     for(let i = 0;i < arr.length;i++){

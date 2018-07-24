@@ -7,7 +7,7 @@
 // INPUT: onlyOne(0, 1, 2)
 // OUTPUT: false
 
-function onlyOne(a,b,c){
+var onlyOne = (a,b,c) => {
     if(a == true && b == false && c == false){
         return true;
     }

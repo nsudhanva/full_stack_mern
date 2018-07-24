@@ -1,4 +1,4 @@
-function Capitalize_Words(string){
+var Capitalize_Words = (string) => {
 	let temp = [];
 	temp = string.split(' ');
 	let result = '';

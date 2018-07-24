@@ -1,5 +1,5 @@
 
-function incDec(number)
+var incDec = (number) =>
 {
     let i = 0;
     while(i <= number)
