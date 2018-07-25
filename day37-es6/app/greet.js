@@ -2,9 +2,9 @@ var hello = () => {
     return 'hello';
 }
 
-var goodAfterNoon = () =>{
+var goodAfterNoon = () => {
     return 'good afteroon'
-}
+} 
 
 var goodEvening = () => {
     return 'good evening'
