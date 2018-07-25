@@ -24,3 +24,16 @@ var person = {
     }
 }
 console.log(person.details());
+
+//es6 - under anonymous function the this keyword is not bound to the function
+
+var person = {
+    name:'Rakesh',
+    skills:['js','rb','py'],
+    details:function(){
+        this.skills.forEach((skill) => {
+            console.log(`${this.name} knows ${skill}`)
+        });
+    }
+}
+console.log(person.details());
