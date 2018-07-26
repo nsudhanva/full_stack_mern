@@ -179,10 +179,12 @@ function getTickets() {
                         return ticket.department == 'Technical' && ticket.status == 'open';
                     });
                     techOpenCount = techOpen.length;
+
                     var salOpen  = tickets.filter(function(ticket){
                         return ticket.department == 'Sales' && ticket.status == 'open';
                     });
                     salesOpenCount = salOpen.length;
+
                     var hrOpen  = tickets.filter(function(ticket){
                         return ticket.department == 'Hr' && ticket.status == 'open';
                     });
@@ -192,10 +194,12 @@ function getTickets() {
                         return ticket.department == 'Technical' && ticket.status == 'completed';
                     });
                     techCloseCount = techClose.length;
+
                     var salClose  = tickets.filter(function(ticket){
                         return ticket.department == 'Sales' && ticket.status == 'completed';
                     });
                     salesCloseCount = salClose.length;
+
                     var hrClose  = tickets.filter(function(ticket){
                         return ticket.department == 'Hr' && ticket.status == 'completed';
                     });
@@ -219,10 +223,10 @@ function getTickets() {
                 },
                 series: [{
                     name: 'open',
-                    data: [techOpenCount,salesOpenCount,hrOpenCount]
+                    data: [salesOpenCount,techOpenCount,hrOpenCount]
                 }, {
                     name: 'complete',
-                    data: [techCloseCount,salesCloseCount,hrCloseCount]
+                    data: [salesCloseCount,techCloseCount,hrCloseCount]
                 }]
             });
         };
@@ -278,7 +282,6 @@ ticketFormHandle.addEventListener('submit', function(e){
 
 window.addEventListener('load', function(){
     getTickets(); 
-
 }, false);
 
 
