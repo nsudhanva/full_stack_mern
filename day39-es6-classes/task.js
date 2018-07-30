@@ -13,7 +13,7 @@ class Task{
     //class method
     static all(){
         return Task.data;
-    }
+    }   
 
     //class method
     static info(){
