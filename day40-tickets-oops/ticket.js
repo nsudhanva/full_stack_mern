@@ -60,6 +60,26 @@ class Ticket{
             console.log(err);
         })
     }
+
+    static findOneAndUpdate(code){
+        axios.put(`http://dct-api-data.herokuapp.com/tickets/${code}?api_key=adaed46e71037faa`,{status:'complete'})
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    static findOneAndDelete(code){
+        axios.delete(`http://dct-api-data.herokuapp.com/tickets/${code}?api_key=adaed46e71037faa`)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        }) 
+    }
 }
 
 module.exports = {

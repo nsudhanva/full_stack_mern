@@ -265,7 +265,7 @@ ticketFormHandle.addEventListener('submit', function(e){
         message: messageHandle.value 
     }; 
 
-    fetch(`${baseUrl}/tickets?api_key=${key}`, {method:'POST'},formData)
+    fetch(`${baseUrl}/tickets?api_key=${key}`, {method:'post'},formData)
     .then(function(response){
         var ticket = response.data; 
 
