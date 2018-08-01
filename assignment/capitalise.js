@@ -9,4 +9,4 @@ var Capitalize_Words = (string) => {
 	return result;
 }
 
-console.log(Capitalize_Words('shreedhar hegde'));
+console.log(Capitalize_Words('shreedhar hegde'));	
