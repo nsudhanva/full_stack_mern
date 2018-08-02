@@ -21,4 +21,4 @@ var firstElements = (a, b) => {
 	return result;
 }
 	let a = [7,9,0,-2];
-	console.log(firstElements(a));
+	console.log(firstElements(a,3));
