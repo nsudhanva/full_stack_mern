@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
 //To PERFORM AN OPERATION ON A RESOURCE / DATA YOUY WILL NEED TO GO TO AN END POINT WITH A SPECIFI HTTP METHOD
 
 //dummy db
+let categories = [{
+    id
+}]
+
 let products = [{
     id:1,
     name:'marker',
@@ -37,7 +41,7 @@ let products = [{
 },
 {
     id:3,
-    name:'board',
+    name:'board',   
     price:75
 }]
 
