@@ -35,9 +35,9 @@ class Products{
     }
 
     static findOneAndRemove(id){
-        let product = Products.data.find((product) => {
-            return product.id == id;
-        })
+        // let product = Products.data.find((product) => {
+        //     return product.id == id;
+        // })
 
         let index = Products.data.findIndex((product) => {
             return product.id == id;
